@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button-edit{
+    color:#0d6dfdab
+}
+
+.button-view:hover{
+    color:#1b9e61fd;
+}
+
+.button-view:hover{
+    color: #dc3546c2;
+}
+

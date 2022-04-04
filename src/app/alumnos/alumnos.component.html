@@ -1,0 +1,34 @@
+<h3 class="ps-3 pt-3">{{titulo}}</h3>
+<hr>
+
+
+<div class="container w-50" *ngIf="alumnos.length > 0">
+    <table class="table table-striped" id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th scope="col">Dni</th>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let alumno of alumnos">
+                    <td>{{alumno.dniAlumno}}</td>
+                    <td>{{alumno.nombreAlumno}} {{alumno.apellidoAlumno}}</td>
+                    <td>{{alumno.emailAlumno}}</td>
+                    <td>
+                        <mat-icon [style.color]="colores.success" [routerLink]="['/alumnos',alumno.idAlumno]"    (mouseenter)="hover('edit',alumno.dniAlumno)"  (mouseleave)="hoverOut('edit',alumno.dniAlumno)"   id="edit{{alumno.dniAlumno}}" type="button">edit</mat-icon>
+                        <mat-icon [style.color]="colores.primary" (click)="view()"  type="button" type="button" (mouseenter)="hover('view',alumno.dniAlumno)"  (mouseleave)="hoverOut('view',alumno.dniAlumno)"   id="view{{alumno.dniAlumno}}">visibility</mat-icon>
+                        <mat-icon [style.color]="colores.danger" (click)="delete(alumno.idAlumno)" type="button"(mouseenter)="hover('delete',alumno.dniAlumno)"(mouseleave)="hoverOut('delete',alumno.dniAlumno)" id="delete{{alumno.dniAlumno}}">delete</mat-icon>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <button [routerLink]="['/alumnos',0]" class="btn btn-primary">Agregar Alumno</button>
+</div>
+
+<div *ngIf="alumnos.length <= 0" class="container w-50">
+    <h3>No hay registros que mostrar</h3>
+</div>
+
