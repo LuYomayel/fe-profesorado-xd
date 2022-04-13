@@ -43,17 +43,19 @@ export class EditAlumnoComponent{
                     response=>{
                         
                         this.alumno = response;
+                        console.log(this.alumno);
                         let fecha = new Date(this.alumno[0].fechaNacAlumno);
                         
                         this.alumno[0].fechaNacAlumno = fecha.toLocaleDateString("fr-CA");
                     },
                     error =>{
                         this._router.navigate(['/alumnos']);
-                        console.log(error)
+                        console.log('Error asd:'+error)
                     }
                     )
                 }
             else{
+                this.titulo = 'Agregar Alumno'
                 this.id = 0;
             }
             });

@@ -25,6 +25,7 @@
                 </tr>
         </tbody>
     </table>
+    <p *ngIf="mensaje != ''" class="danger">{{mensaje}}</p>
     <button [routerLink]="['/alumnos',0]" class="btn btn-primary">Agregar Alumno</button>
 </div>
 

@@ -8,7 +8,7 @@ export class Alumno {
         public emailAlumno:string,
         public fechaNacAlumno: Date,
         public estado: Number,
-        public telefonoAlumno:Number
+        public telAlumno:Number
     ){
         
     }

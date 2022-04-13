@@ -1,43 +1,42 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { Alumno } from "../models/alumno";
-// import { AlumnosService } from "../services/alumnos.services";
-import { AlumnosService } from "../services/alumnos.services";
+import { Profesor } from "../models/profesor";
+import { ProfesoresService } from "../services/profesores.service";
 import { global } from "../services/global";
 @Component ({
-    selector: 'alumnos', // => Esto es para seleccionar esta plantilla
-    templateUrl: './alumnos.component.html', //direccion donde esta la plantilla
+    selector: 'profesores', // => Esto es para seleccionar esta plantilla
+    templateUrl: './profesores.component.html', //direccion donde esta la plantilla
     providers: [
-        AlumnosService
+        ProfesoresService
     ]
 }
 )
-export class AlumnoComponent{
+export class ProfesorComponent{
     public titulo:string; //variable que puede utilizarse en las distintas plantillas
-    public alumnos: Alumno[] = [];
+    public profesores: Profesor[] = [];
     public colores: any;
-    public mensaje: string;
+    public mensaje:string;
     constructor(
         private _route:ActivatedRoute,
         private _router:Router,
-        private _alumnosService:AlumnosService
+        private _profesoresService:ProfesoresService
         
     ){
-        this.titulo='Listado de alumnos';
+        this.titulo='Listado de profesores';
         this.colores = global.colores;
         this.mensaje = '';
     }
     ngOnInit(){
         
-        console.log('Se ha cargado el component alumnos');
-        this.getAlumnos();
+        console.log('Se ha cargado el component profesores');
+        this.getProfesores();
         
     }
 
-    getAlumnos(){
-        this._alumnosService.getAlumnos().subscribe(
+    getProfesores(){
+        this._profesoresService.getProfesores().subscribe(
             result => {
-                this.alumnos = result;
+                this.profesores = result;
                 
             },
             error => {
@@ -46,27 +45,26 @@ export class AlumnoComponent{
         );
     }
 
-    edit(alumno:Alumno){
-        console.log(alumno)
+    edit(profesor:Profesor){
+        console.log(profesor)
     }
 
     view(){
         console.log('xd')
     }
-    delete(idAlumno:Number){
-        this._alumnosService.deleteAlumno(idAlumno).then(
+    delete(idProfesor:Number){
+        this._profesoresService.deleteProfesor(idProfesor).then(
             result => {
-                this.getAlumnos();
+                this.getProfesores();
                 this.mensaje = 'Eliminado con éxito!';
             },
             error => {
                 console.log(error);
             }
         );
-        
-        setTimeout( () => {
+        setTimeout( () =>{
             this.mensaje = '';
-        }, 3000)
+        },3000);
     }
     hover(variable:string, dni:any){
         let btn = document.getElementById(variable+dni);

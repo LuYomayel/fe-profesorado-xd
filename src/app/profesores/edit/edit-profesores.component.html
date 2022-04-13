@@ -1,0 +1,80 @@
+<h3 class="ps-3 pt-3">{{titulo}}</h3>
+<hr>
+
+<div class="container w-25" *ngIf="id != 0">
+    
+    <form class="row g-3" formProfesor="ngForm" id="form-profesor">
+        
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input type="text" class="form-control"  nombre="ngModel" name="nombreProfesor" [(ngModel)]="profesor[0].nombreProfesor" >
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Apellido</label>
+            <input type="text" class="form-control"   apellido="ngModel" name="apellidoProfesor" [(ngModel)]="profesor[0].apellidoProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Direccion</label>
+            <input type="text" class="form-control"    direccion="ngModel" name="direccionProfesor" [(ngModel)]="profesor[0].direccionProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Email</label>
+            <input type="text" class="form-control"    email="ngModel" name="emailProfesor" [(ngModel)]="profesor[0].emailProfesor">
+        </div>
+        <div class="col-md-5">
+            <label for="inputEmail4" class="form-label">Dni</label>
+            <input type="text" class="form-control"  readonly dni="ngModel" name="dniProfesor" [(ngModel)]="profesor[0].dniProfesor">
+        </div>
+        <div class="col-md-7">
+            <label for="inputEmail4" class="form-label">Telefono</label>
+            <input type="text" class="form-control"   telefono="ngModel" name="telefonoProfesor" [(ngModel)]="profesor[0].telProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control"   fechaNac="ngModel" name="fechaNacProfesor" [(ngModel)]="profesor[0].fechaNacProfesor">
+        </div>
+        
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" (click)="editar(profesor[0].idProfesor)">Editar</button>
+        </div>
+    </form>
+</div>
+
+<div class="container w-25" *ngIf="id == 0">
+    
+    <form class="row g-3" formProfesor="ngForm" id="form-profesor">
+        
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input type="text" class="form-control"  nombre="ngModel" name="nombreProfesor"  [(ngModel)]="profe.nombreProfesor">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Apellido</label>
+            <input type="text" class="form-control"   apellido="ngModel" name="apellidoProfesor" [(ngModel)]="profe.apellidoProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Direccion</label>
+            <input type="text" class="form-control"    direccion="ngModel" name="direccionProfesor" [(ngModel)]="profe.direccionProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Email</label>
+            <input type="text" class="form-control"    email="ngModel" name="emailProfesor" [(ngModel)]="profe.emailProfesor">
+        </div>
+        <div class="col-md-5">
+            <label for="inputEmail4" class="form-label">Dni</label>
+            <input type="text" class="form-control"  dni="ngModel" name="dniProfesor" [(ngModel)]="profe.dniProfesor">
+        </div>
+        <div class="col-md-7">
+            <label for="inputEmail4" class="form-label">Telefono</label>
+            <input type="text" class="form-control"   telefono="ngModel" name="telefonoProfesor" [(ngModel)]="profe.telProfesor">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control"   fechaNac="ngModel" name="fechaNacProfesor" [(ngModel)]="profe.fechaNacProfesor">
+        </div>
+        
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" (click)="agregar()">Agregar</button>
+        </div>
+    </form>
+</div>

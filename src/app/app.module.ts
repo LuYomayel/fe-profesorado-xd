@@ -15,10 +15,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AlumnoComponent } from './alumnos/alumnos.component';
+import { ProfesorComponent } from './profesores/profesores.component';
+import { EditAlumnoComponent } from './alumnos/edit/edit-alumnos.component';
+import { EditProfesorComponent } from './profesores/edit/edit-profesores.component';
 //Rutas
 import { routing, appRoutingProviders } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditAlumnoComponent } from './alumnos/edit/edit-alumnos.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { EditAlumnoComponent } from './alumnos/edit/edit-alumnos.component';
     HeaderComponent,
     HomeComponent,
     AlumnoComponent,
-    EditAlumnoComponent
+    EditAlumnoComponent,
+    ProfesorComponent,
+    EditProfesorComponent
   ],
   imports: [
     BrowserModule,

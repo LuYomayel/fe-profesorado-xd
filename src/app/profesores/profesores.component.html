@@ -1,0 +1,35 @@
+<h3 class="ps-3 pt-3">{{titulo}}</h3>
+<hr>
+
+
+<div class="container w-50" *ngIf="profesores.length > 0">
+    <table class="table table-striped" id="tablaProfesores">
+        <thead>
+            <tr>
+                <th scope="col">Dni</th>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let profesor of profesores">
+                    <td>{{profesor.dniProfesor}}</td>
+                    <td>{{profesor.nombreProfesor}} {{profesor.apellidoProfesor}}</td>
+                    <td>{{profesor.emailProfesor}}</td>
+                    <td>
+                        <mat-icon [style.color]="colores.success" [routerLink]="['/profesores',profesor.idProfesor]"    (mouseenter)="hover('edit',profesor.dniProfesor)"  (mouseleave)="hoverOut('edit',profesor.dniProfesor)"   id="edit{{profesor.dniProfesor}}" type="button">edit</mat-icon>
+                        <mat-icon [style.color]="colores.primary" (click)="view()"  type="button" type="button" (mouseenter)="hover('view',profesor.dniProfesor)"  (mouseleave)="hoverOut('view',profesor.dniProfesor)"   id="view{{profesor.dniProfesor}}">visibility</mat-icon>
+                        <mat-icon [style.color]="colores.danger" (click)="delete(profesor.idProfesor)" type="button"(mouseenter)="hover('delete',profesor.dniProfesor)"(mouseleave)="hoverOut('delete',profesor.dniProfesor)" id="delete{{profesor.dniProfesor}}">delete</mat-icon>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <p *ngIf="mensaje != ''">{{mensaje}}</p>
+    <button [routerLink]="['/profesores',0]" class="btn btn-primary">Agregar Profesor</button>
+</div>
+
+<div *ngIf="profesores.length <= 0" class="container w-50">
+    <h3>No hay registros que mostrar</h3>
+</div>
+

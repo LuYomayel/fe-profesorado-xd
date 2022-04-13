@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpResponse, HttpHeaders , HttpRequest  } from '@angular/common/http';
 
 import {map} from 'rxjs/operators';
-import { Alumno } from "../models/alumno";
+import { Profesor } from "../models/profesor";
 import { global } from "./global";
 import { Observable } from "rxjs";
 
 @Injectable()
 
-export class AlumnosService{
+export class ProfesoresService{
     public url:string;
 
     constructor(
@@ -17,39 +17,40 @@ export class AlumnosService{
         this.url = global.url
     }
 
-    getAlumnos(): Observable<Alumno[]>{
+    getProfesores(): Observable<Profesor[]>{
         
-        return this._http.get<any>(this.url+'alumnos');
+        return this._http.get<any>(this.url+'profesores');
         //return this._http.get<any>(this.url+'productos').pipe(map(res => res));
         
     }
-    editAlumno(alumno:any){
-        let json = JSON.stringify(alumno[0]);
+    editProfesor(profesor:any){
+        let json = JSON.stringify(profesor[0]);
         
         //return params;
-        console.log(alumno[0]);
-        return this._http.put(this.url+'alumnos/'+alumno[0].idAlumno, json, {headers: {"Content-type":"application/json"}})
+        console.log(profesor[0]);
+        return this._http.put(this.url+'profesores/'+profesor[0].idProfesor, json, {headers: {"Content-type":"application/json"}})
             .toPromise()
             .then((response) => response as any)
             .catch((err) => console.log(err));
     }
-    getAlumno(id:number){
+    getProfesor(id:number){
         
-        return this._http.get(this.url+'alumnos/'+id).pipe(map(res => res));
+        return this._http.get(this.url+'profesores/'+id).pipe(map(res => res));
     }
-    deleteAlumno(id:Number){
-        return this._http.delete(this.url+'alumnos/'+id)
+    deleteProfesor(id:Number){
+        return this._http.delete(this.url+'profesores/'+id)
             .toPromise()
             .then((response) => response as any)
             .catch((err) => console.log(err));
     }
-    addAlumno(alumno:Alumno){
-        let json = JSON.stringify(alumno);
+    addProfesor(profesor:Profesor){
+        let json = JSON.stringify(profesor);
+        console.log(json)
         let params = 'json='+json;
         let headers = new HttpHeaders('application/x-www-form-urlencoded');
         //return params;
         
-        return this._http.post(this.url+'alumnos', json, {headers: {"Content-type":"application/json"}})
+        return this._http.post(this.url+'profesores', json, {headers: {"Content-type":"application/json"}})
         .toPromise()
         .then((response) => response as any)
         .catch((err) => console.log(err));
