@@ -18,6 +18,7 @@ import { AlumnoComponent } from './alumnos/alumnos.component';
 import { ProfesorComponent } from './profesores/profesores.component';
 import { EditAlumnoComponent } from './alumnos/edit/edit-alumnos.component';
 import { EditProfesorComponent } from './profesores/edit/edit-profesores.component';
+import { MateriaComponent } from './materias/materias.component';
 //Rutas
 import { routing, appRoutingProviders } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AlumnoComponent,
     EditAlumnoComponent,
     ProfesorComponent,
-    EditProfesorComponent
+    EditProfesorComponent,
+    MateriaComponent
   ],
   imports: [
     BrowserModule,

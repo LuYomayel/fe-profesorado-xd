@@ -1,0 +1,34 @@
+<h3 class="ps-3 pt-3">{{titulo}}</h3>
+<hr>
+
+
+<div class="container w-50" *ngIf="listaMaterias.length > 0">
+    <table class="table table-striped" id="tablaMaterias">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let materia of listaMaterias">
+                    <td>{{materia.idMateria}}</td>
+                    <td>{{materia.nombreMateria}}</td>
+                    <td>
+                        
+                        <mat-icon [style.color]="colores.success" [routerLink]="['/materias',materia.idMateria]"    (mouseenter)="hover('edit',materia.idMateria)"  (mouseleave)="hoverOut('edit',materia.idMateria)"   id="edit{{materia.idMateria}}" type="button">edit</mat-icon>
+                        <mat-icon [style.color]="colores.primary" (click)="view()"  type="button" type="button" (mouseenter)="hover('view',materia.idMateria)"  (mouseleave)="hoverOut('view',materia.idMateria)"   id="view{{materia.idMateria}}">visibility</mat-icon>
+                        <mat-icon [style.color]="colores.danger" (click)="delete(materia.idMateria)" type="button"(mouseenter)="hover('delete',materia.idMateria)"(mouseleave)="hoverOut('delete',materia.idMateria)" id="delete{{materia.idMateria}}">delete</mat-icon>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <p *ngIf="mensaje != ''" class="danger">{{mensaje}}</p>
+    <input name="txtMateria" id="txtMateria" type="text" [(ngModel)]="addMat"/>
+    <button (click)="addMateria()" class="btn btn-primary">Agregar Materia</button>
+</div>
+
+<div *ngIf="listaMaterias.length === 0" class="container w-50">
+    <h3>No hay registros que mostrar</h3>
+</div>

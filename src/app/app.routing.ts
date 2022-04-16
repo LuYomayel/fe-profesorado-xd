@@ -6,11 +6,13 @@ import { AlumnoComponent } from "./alumnos/alumnos.component";
 import { EditAlumnoComponent } from "./alumnos/edit/edit-alumnos.component";
 import { ProfesorComponent } from "./profesores/profesores.component";
 import { EditProfesorComponent } from "./profesores/edit/edit-profesores.component";
+import { MateriaComponent } from "./materias/materias.component";
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'alumnos', component: AlumnoComponent},
     {path: 'profesores', component: ProfesorComponent},
+    {path: 'materias', component: MateriaComponent},
     {path: 'alumnos/:idAlumno', component: EditAlumnoComponent},
     {path: 'profesores/:idProfesor', component: EditProfesorComponent},
     {path: '**', component: HomeComponent}

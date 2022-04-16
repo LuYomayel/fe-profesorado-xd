@@ -1,61 +1,61 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { Alumno } from "../models/alumno";
+import { Materia } from "../models/materia";
 // import { AlumnosService } from "../services/alumnos.services";
-import { AlumnosService } from "../services/alumnos.services";
+import { MateriasService } from "../services/materias.services";
 import { global } from "../services/global";
+
 @Component ({
-    selector: 'alumnos', // => Esto es para seleccionar esta plantilla
-    templateUrl: './alumnos.component.html', //direccion donde esta la plantilla
+    selector: 'materias', // => Esto es para seleccionar esta plantilla
+    templateUrl: './materias.component.html', //direccion donde esta la plantilla
     providers: [
-        AlumnosService
+        MateriasService
     ]
-}
-)
-export class AlumnoComponent{
-    public titulo:string; //variable que puede utilizarse en las distintas plantillas
-    public alumnos: Alumno[] = [];
+})
+
+export class MateriaComponent{
+    public titulo:string
+    public listaMaterias:any;
     public colores: any;
     public mensaje: string;
+    public materia:Materia;
+    public addMat:string;
     constructor(
         private _route:ActivatedRoute,
         private _router:Router,
-        private _alumnosService:AlumnosService
-        
+        private _materiasService: MateriasService
     ){
-        this.titulo='Listado de alumnos';
-        this.colores = global.colores;
+        this.titulo = 'Listado de Materias';
         this.mensaje = '';
+        this.colores = global.colores;
+        this.materia = new Materia(0,'',1);
+        this.addMat = '';
     }
     ngOnInit(){
-        console.log('Se ha cargado el component alumnos');
-        this.getAlumnos();
+        this.getMaterias();
+        if(this.getMaterias === undefined)this.listaMaterias = [];
     }
-
-    getAlumnos(){
-        this._alumnosService.getAlumnos().subscribe(
-            result => {
-                this.alumnos = result;
-                
-            },
-            error => {
-                console.log(error);
-            }
-        );
+    getMaterias(){
+        this._materiasService.getMaterias().subscribe((materia) => this.listaMaterias = materia)
     }
+    addMateria(){
+        this.materia.nombreMateria = this.addMat;
+        this._materiasService.addMateria(this.materia)
+            .then( response => {
+                this.getMaterias();
+            })
+            .catch(error => console.log(error))
 
-    edit(alumno:Alumno){
-        console.log(alumno)
+        
     }
-
     view(){
         console.log('xd')
     }
-    delete(idAlumno:Number){
-        this._alumnosService.deleteAlumno(idAlumno).then(
+    delete(idMateria:Number){
+        this._materiasService.deleteMateria(idMateria).then(
             result => {
-                this.getAlumnos();
-                this.mensaje = 'Eliminado con éxito!';
+                this.getMaterias();
+                this.mensaje = 'Eliminada con éxito!';
             },
             error => {
                 console.log(error);
